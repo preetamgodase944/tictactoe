@@ -16,6 +16,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "node-sass": "^6.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
@@ -24,25 +25,25 @@
     "babel-preset-nano-react-app": "^0.1.0",
     "parcel": "1.12.4"
   },
-  "babel":{
-    "presets":[
-    "nano-react-app"
+  "babel": {
+    "presets": [
+      "nano-react-app"
     ],
-    "plugins":[
-    [
-    "@babel/plugin-proposal-class-properties",
-    {
-    "loose":true
-    },
-    "yt1"
-    ],
-    [
-    "@babel/plugin-proposal-private-methods",
-    {
-    "loose":true
-    },
-    "yt2"
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        },
+        "yt1"
+      ],
+      [
+        "@babel/plugin-proposal-private-methods",
+        {
+          "loose": true
+        },
+        "yt2"
+      ]
     ]
-    ]
-    }
+  }
 }
