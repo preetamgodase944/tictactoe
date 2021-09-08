@@ -15,7 +15,6 @@ const Board = () => {
       return;
     }
     setBoard( previous => {
-    
       return previous.map((square,pos)=>{
         if(pos === position){
           return isXNext ? 'X': '0';
