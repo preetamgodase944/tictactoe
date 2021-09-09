@@ -1,29 +1,10 @@
-import React,{ useState } from 'react';
+import React from 'react';
 import Square from './Square';
 
-const Board = () => {
-  const [board, setBoard] = useState( Array(9).fill(null) );
-  const [isXNext, setIsXNext] = useState(false);//for player
-  //useState is a hook,allthe hooks's start with 'use'
-  //  states are you used to represent state of something,
-  //here using the useStates we are creating an array of size 9 and initializing its elements to null 
-  //useStates returns two arrays one initial and another new one so we are destructuring it
-  
-  const handleSquareClick = position => {
+const Board = ({board, handleSquareClick}) => {
 
-    if( board[position]){
-      return;
-    }
-    setBoard( previous => {
-      return previous.map((square,pos)=>{
-        if(pos === position){
-          return isXNext ? 'X': '0';
-        }
-        return square;
-      });
-    } );
-    setIsXNext((previous) => !previous);
-  };
+  
+  
   console.log(board);
   const renderPosition= (position) =>{
     return (
@@ -55,3 +36,12 @@ const Board = () => {
 };
 
 export default Board;
+
+
+//only in react class are written as className
+
+
+
+//if we want to add a message above the Board we can do it in either The div board here or in app component before the <Board /> Component
+//if we add it in this App component we won't have access to the state board and the handleSquareClick method
+//so we want to have this state and handleSquareClick method in App.js and we pass board state and the method as properties of board element in App component
