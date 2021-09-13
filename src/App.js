@@ -1,10 +1,11 @@
 import React,{ useState } from "react";
-import Board from "./components/Board"
+import Board from "./components/Board";
+import History from "./components/History";
 import { calculateWinner } from "./helpers"
 import "./styles/root.scss";
 
 const App =() => {
-  //  const [board, setBoard] = useState( Array(9).fill(null) );
+  //  const [History, setBoard] = useState( Array(9).fill(null) );
   //  const [isXNext, setIsXNext] = useState(false);//for player
   //useState is a hook,all the hooks's start with 'use'
   //  states are used to represent state of something,
@@ -44,18 +45,22 @@ const App =() => {
     } );
     // setIsXNext((previous) => !previous);
     
-    setCurrentMove(previous=>previous+1);
+    setCurrentMove(previous => previous+1);
 
    };
-   
+
+   const moveTo = (move)=>{
+     setCurrentMove(move);
+   }
    
   return (
    <div className="app"> 
       <h1>TIC TAC TOE</h1>
       <h2>{ message }</h2>
       <Board board = {current.board} handleSquareClick ={handleSquareClick}/>   
+      <History history={history} moveTo={moveTo} currentMove = {currentMove}/>
    </div>
-  )
+  );
 };
 
 export default App;
