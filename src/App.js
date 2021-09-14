@@ -5,6 +5,10 @@ import StatusMessage from "./components/StatusMessage";
 import { calculateWinner } from "./helpers"
 import "./styles/root.scss";
 
+const NEW_GAME =[
+  {board: Array(9).fill(null),isXNext:false},
+]
+
 const App =() => {
   //  const [History, setBoard] = useState( Array(9).fill(null) );
   //  const [isXNext, setIsXNext] = useState(false);//for player
@@ -13,15 +17,13 @@ const App =() => {
   //here using the useStates we are creating an array of size 9 and initializing its elements to null 
   //useStates returns two arrays one initial and another new one so we are destructuring it
 
-  const [ history, setHistory ] = useState( [
-    {board: Array(9).fill(null),isXNext:false},
-  ] );
+  const [ history, setHistory ] = useState( NEW_GAME );
 
   const [currentMove, setCurrentMove] = useState(0);
 
   const current = history[currentMove];
   
-   const winner = calculateWinner(current.board);
+   const {winner,winningSquares} = calculateWinner(current.board);
    
 
    console.log(history);
@@ -52,11 +54,16 @@ const App =() => {
      setCurrentMove(move);
    }
    
+   const setNewGame=()=>{
+     setHistory(NEW_GAME)
+     setCurrentMove(0)
+   }
   return (
    <div className="app"> 
       <h1>TIC TAC TOE</h1>
       <StatusMessage winner= { winner } current = {current}/>
-      <Board board = {current.board} handleSquareClick ={handleSquareClick}/>   
+      <Board board = {current.board} handleSquareClick ={handleSquareClick} winningSquares={winningSquares}/>  
+      <button type="button" onClick={setNewGame}> Set New Game</button> 
       <History history={history} moveTo={moveTo} currentMove = {currentMove}/>
    </div>
   );

@@ -1,35 +1,39 @@
 import React from 'react';
 import Square from './Square';
 
-const Board = ({board, handleSquareClick}) => {
+const Board = ({board, handleSquareClick, winningSquares}) => {
 
   
   
   console.log(board);
-  const renderPosition= (position) =>{
+  const renderSquare= (position) =>{
+
+    const isWinningSquare =winningSquares.includes(position)
     return (
       <Square
         value={board[position]}
-        onClick={() => handleSquareClick(position)}/>
+        onClick={() => handleSquareClick(position)}
+        isWinningSquare={ isWinningSquare }
+      />
     );
 
   };
   return (
     <div className="board">
       <div className="board-row">
-        { renderPosition(0) }
-        { renderPosition(1) }
-        { renderPosition(2) }
+        { renderSquare(0) }
+        { renderSquare(1) }
+        { renderSquare(2) }
       </div>
       <div className="board-row">
-        { renderPosition(3) }
-        { renderPosition(4) }
-        { renderPosition(5) }
+        { renderSquare(3) }
+        { renderSquare(4) }
+        { renderSquare(5) }
       </div>
       <div className="board-row">
-        { renderPosition(6) }
-        { renderPosition(7) }
-        { renderPosition(8) }
+        { renderSquare(6) }
+        { renderSquare(7) }
+        { renderSquare(8) }
       </div>
     </div>
   )
